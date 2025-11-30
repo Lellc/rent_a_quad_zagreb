@@ -1,0 +1,127 @@
+/* ------------------- INITIALIZATION ------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gray-lightest: #f8f9fa;
+  --gray-border: #dee2e6;
+  --gray-darkest: #212529;
+  --cta-red: #c92a2a;
+}
+
+html {
+  font-family: "Roboto Flex", sans-serif;
+  color: var(--gray-darkest);
+  scroll-behavior: smooth;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+image {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* -------------------- HEADER -------------------- */
+
+.header-main {
+  align-content: center;
+
+  min-height: 10vh;
+  background-color: var(--gray-lightest);
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.header-main--content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 4rem;
+  margin-inline: auto;
+}
+
+.header-main--nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--gray-darkest);
+}
+
+.nav-link,
+.btn--lang {
+  font-weight: 500;
+}
+
+.btn--lang {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  /* border: 1px solid var(--gray-darkest); */
+  border-radius: 0.25rem;
+}
+
+.header-main--right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn--header-cta {
+  background-color: var(--cta-red);
+  color: var(--gray-lightest);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+/* -------------------- HERO SECTION -------------------- */
+
+.section--hero {
+  min-height: 90vh;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
+    url(images/hero_background.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+}
+
+.heading-main {
+  font-size: 8rem;
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--gray-lightest);
+}
+
+.hero-content {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 4rem;
+}
