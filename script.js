@@ -3,6 +3,15 @@ const body = document.body;
 const allSections = document.querySelectorAll(`.section`);
 const allSectionContents = document.querySelectorAll(`.section-content`);
 const logos = document.querySelectorAll(`[data-id="logo"]`);
+const burgerButton = document.querySelector(`.btn-burger`);
+const headerNavigation = document.querySelector(`.header-right`);
+const navLinks = document.querySelectorAll(`.nav-link`);
+const footerYearEl = document.querySelector(`.footer-year`);
+
+// DISPLAYING YEAR
+const now = new Date();
+const currYear = now.getFullYear();
+footerYearEl.textContent = currYear;
 
 // SMOOTH SCROLLING
 body.addEventListener(`click`, (e) => {
@@ -13,6 +22,9 @@ body.addEventListener(`click`, (e) => {
   if (destination === `#`) {
     scrollTo(0, 0);
     return;
+  }
+  if (link.classList.contains(`nav-link`)) {
+    headerNavigation.classList.remove(`nav-shown`);
   }
   const destinationElement = document.querySelector(destination);
   const offset = destination === `#section--email` ? 43 : 96;
@@ -47,4 +59,14 @@ const sectionObserver = new IntersectionObserver(
 allSectionContents.forEach((content) => {
   content.classList.add(`section-hidden`);
   sectionObserver.observe(content);
+});
+
+// BURGER
+burgerButton.addEventListener(`click`, () => {
+  const burgerIcon = burgerButton.querySelector(`ion-icon`);
+  let burgerIconName = burgerIcon.getAttribute(`name`);
+  headerNavigation.classList.toggle(`nav-shown`);
+  burgerIconName =
+    burgerIconName === `menu-sharp` ? `close-sharp` : `menu-sharp`;
+  burgerIcon.setAttribute(`name`, burgerIconName);
 });

@@ -11,33 +11,36 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <header id="header">
       <div class="header-content">
-        <div class="header-left">
-          <a href="#" data-id="navigation">
-            <img src="images/logo-footer.svg" alt="TGB logo" class="logo" />
+        <a href="#" data-id="navigation">
+          <img src="images/logo-footer.svg" alt="TGB logo" class="logo" />
+        </a>
+        <nav class="header-right">
+          <a href="#section--products" class="nav-link" data-id="navigation">
+            Selekcija quadova
           </a>
-        </div>
-        <div class="header-right">
-          <a href="#section--products" class="nav-link" data-id="navigation"
-            >Selekcija quadova</a
-          >
-          <a href="#section--info" class="nav-link" data-id="navigation"
-            >Korisne informacije</a
-          >
-          <a href="#section--email" class="nav-link" data-id="navigation"
-            >Rezerviraj quad</a
-          >
+          <a href="#section--info" class="nav-link" data-id="navigation">
+            Korisne informacije
+          </a>
+          <a href="#section--email" class="nav-link" data-id="navigation">
+            Rezerviraj quad
+          </a>
           <a
             class="btn btn--header-cta"
             href="#section--email"
             data-id="navigation"
-            >Rezerviraj quad</a
           >
-        </div>
+            Rezerviraj quad
+          </a>
+        </nav>
+        <button class="btn btn-burger">
+          <ion-icon name="menu-sharp"></ion-icon>
+        </button>
       </div>
     </header>
     <section id="section--hero">
@@ -238,10 +241,10 @@
         </div>
       </div>
       <div>
-        <h3 class="card-heading footer-heading">Društvene mreže</h3>
+        <h3 class="card-heading footer-heading">Zapratite nas</h3>
         <div class="footer-links">
+          <a href="http://www.quadsquad.in/" class="footer-link">Naš webshop</a>
           <a href="" class="footer-link">Instagram</a>
-          <a href="" class="footer-link">TikTok</a>
           <a href="" class="footer-link">Facebook</a>
         </div>
       </div>

@@ -74,6 +74,7 @@ a {
   max-width: 90rem;
   margin-inline: auto;
   margin-bottom: 12rem;
+  padding-inline: 2rem;
 }
 
 .section-heading {
@@ -127,15 +128,14 @@ a {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   padding: 0 6rem;
-  margin-inline: auto;
 }
 
-.header-left,
 .header-right {
-  display: flex;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 3rem;
 }
@@ -150,6 +150,10 @@ a {
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius-btn);
+}
+
+.btn-burger {
+  display: none;
 }
 
 /* -------------------- HERO SECTION -------------------- */
@@ -346,7 +350,8 @@ a {
   color: #fff;
   padding: 6rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .footer-heading {
