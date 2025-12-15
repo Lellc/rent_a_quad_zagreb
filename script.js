@@ -7,6 +7,31 @@ const burgerButton = document.querySelector(`.btn-burger`);
 const headerNavigation = document.querySelector(`.header-right`);
 const navLinks = document.querySelectorAll(`.nav-link`);
 const footerYearEl = document.querySelector(`.footer-year`);
+const headerElement = document.querySelector(`#header`);
+const heroSection = document.querySelector(`#section--hero`);
+const headerOverlay = document.querySelector(`.header-overlay`);
+const burgerIcon = burgerButton.querySelector(`ion-icon`);
+
+const headerHeight = headerElement.getBoundingClientRect().height;
+
+const closeNavigation = function () {
+  headerNavigation.classList.remove(`nav-shown`);
+  headerOverlay.classList.remove(`header-overlay-shown`);
+  burgerIcon.setAttribute(`name`, `menu-sharp`);
+};
+
+window.addEventListener(`scroll`, () => {
+  const headerVisibleHeight = headerElement.getBoundingClientRect().bottom;
+  const headerHeightPercentage =
+    (headerVisibleHeight / window.innerHeight) * 100;
+  let overlayHeight = 100 - headerHeightPercentage;
+  if (overlayHeight >= 100) overlayHeight = 100;
+  document.documentElement.style.setProperty(
+    `--overlay-height`,
+    `${overlayHeight}vh`
+  );
+  closeNavigation();
+});
 
 // DISPLAYING YEAR
 const now = new Date();
@@ -21,20 +46,20 @@ body.addEventListener(`click`, (e) => {
   const destination = link.getAttribute(`href`);
   if (destination === `#`) {
     scrollTo(0, 0);
+    closeNavigation();
     return;
   }
-  if (link.classList.contains(`nav-link`)) {
-    headerNavigation.classList.remove(`nav-shown`);
-  }
   const destinationElement = document.querySelector(destination);
-  const offset = destination === `#section--email` ? 43 : 96;
+  const offset =
+    destination === `#section--email` ? headerHeight : 96 + headerHeight;
   const destinationElementTop =
     window.scrollY + destinationElement.getBoundingClientRect().top - offset;
   window.scrollTo({
     top: destinationElementTop,
     left: 0,
-    scrollBehavior: `smooth`,
+    behavior: `smooth`,
   });
+  closeNavigation();
 });
 
 // SECTION APPEARING EFFECT
@@ -63,10 +88,42 @@ allSectionContents.forEach((content) => {
 
 // BURGER
 burgerButton.addEventListener(`click`, () => {
-  const burgerIcon = burgerButton.querySelector(`ion-icon`);
+  burgerButton.disabled = true;
+  setTimeout(() => {
+    burgerButton.disabled = false;
+  }, 500);
   let burgerIconName = burgerIcon.getAttribute(`name`);
   headerNavigation.classList.toggle(`nav-shown`);
+  headerOverlay.classList.toggle(`header-overlay-shown`);
   burgerIconName =
     burgerIconName === `menu-sharp` ? `close-sharp` : `menu-sharp`;
   burgerIcon.setAttribute(`name`, burgerIconName);
 });
+
+headerOverlay.addEventListener(`click`, () => {
+  closeNavigation();
+});
+
+document.addEventListener(`keydown`, (e) => {
+  if (e.key === `Escape`) closeNavigation();
+});
+
+// FIXED HEADER
+const heroHandler = function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      headerElement.classList.remove(`header-fixed-position`);
+    } else {
+      headerElement.classList.add(`header-fixed-position`);
+    }
+  });
+};
+
+const heroOptions = {
+  root: null,
+  rootMargin: `-${headerHeight}px`,
+  threshold: 0,
+};
+
+const heroObserver = new IntersectionObserver(heroHandler, heroOptions);
+heroObserver.observe(heroSection);

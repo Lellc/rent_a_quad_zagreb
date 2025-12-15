@@ -1,33 +1,41 @@
 /* -------------------- RESPONSIVE -------------------- */
 
 @media (max-width: 1215px) {
-  #header {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
+  :root {
+    --overlay-height: 90vh;
   }
-  #section--hero {
-    min-height: 100vh;
+  .header-overlay {
+    position: fixed;
+    bottom: 0;
+    opacity: 0;
+    height: var(--overlay-height);
+    width: 100vw;
+    background-color: #000;
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+  .header-overlay-shown {
+    opacity: 0.5;
+    pointer-events: all;
   }
   .header-right {
+    position: fixed !important;
+    bottom: 0;
+    right: -25rem;
     grid-template-columns: 1fr;
     align-content: center;
     justify-items: center;
-    position: fixed;
     background-color: #fff;
-    bottom: 0;
-    right: -25rem;
-    width: 25rem;
-    min-height: 90vh;
-    z-index: 1;
-    transition: right 500ms ease;
+    height: var(--overlay-height);
     box-shadow: var(--box-shadow-global);
     border-left: 1px solid var(--gray-border);
-
-    backdrop-filter: blur(20px);
+    padding-inline: 5rem;
+    margin-left: auto;
+    position: fixed;
+    transition: right 500ms ease;
   }
   .nav-shown {
-    right: 0;
+    right: 0rem;
   }
   .btn-burger {
     display: flex;
