@@ -79,6 +79,7 @@ a {
 
 .section-heading {
   font-size: 3.5rem;
+  font-size: clamp(2.5rem, 3vw, 3.5rem);
   text-transform: uppercase;
   font-weight: 800;
   text-align: center;
@@ -118,7 +119,6 @@ a {
 }
 
 #header {
-  min-height: 10vh;
   align-content: center;
   background-color: #fff;
   border-bottom: 1px solid var(--gray-border);
@@ -134,7 +134,8 @@ a {
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 6rem;
+  padding-inline: clamp(2rem, 5vw, 6rem);
+  padding-block: 1rem;
   z-index: 1;
 }
 
@@ -179,12 +180,12 @@ a {
 }
 
 .heading-main {
-  font-size: 10rem;
+  font-size: clamp(5rem, 8.4vw, 10rem);
   font-weight: 1000;
   text-transform: uppercase;
   color: #fff;
   margin-top: auto;
-  padding: 6rem;
+  padding: clamp(2rem, 5vw, 6rem);
   line-height: 0.755;
 }
 
