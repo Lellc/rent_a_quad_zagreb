@@ -1,9 +1,15 @@
+/* HEADER & HERO */
+
 @media (max-width: 825px) {
   :root {
     --overlay-height: 90vh;
   }
 
   /* HEADER */
+
+  .logo {
+    width: 5rem;
+  }
 
   .header-overlay {
     position: fixed;
@@ -15,10 +21,12 @@
     transition: opacity 500ms ease;
     pointer-events: none;
   }
+
   .header-overlay-shown {
     opacity: 0.5;
     pointer-events: all;
   }
+
   .header-right {
     position: fixed !important;
     bottom: 0;
@@ -35,14 +43,49 @@
     position: fixed;
     transition: right 500ms ease;
   }
-  .nav-shown {
+
+  .header-right-shown {
     right: 0rem;
   }
+
   .btn-burger {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  /* HERO */
+  #section--hero {
+    margin-bottom: 8rem;
+  }
+}
+
+/* PRODUCT SECTION & INFO SECTION */
+@media (max-width: 935px) {
+  .product-cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-card {
+    padding: clamp(2rem, 6.9vw, 4rem);
+  }
+  .info-bento-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .info-img {
+    display: none;
+  }
+}
+
+@media (max-width: 698px) {
+  .product-cards-container {
+    grid-template-columns: 1fr;
+  }
+  .product-card {
+    padding: clamp(2rem, 10.1vw, 4rem);
+  }
+  .info-bento-container {
+    grid-template-columns: 1fr;
   }
 }

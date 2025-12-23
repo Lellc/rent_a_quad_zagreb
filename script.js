@@ -12,16 +12,17 @@ const heroSection = document.querySelector(`#section--hero`);
 const headerOverlay = document.querySelector(`.header-overlay`);
 const burgerIcon = burgerButton.querySelector(`ion-icon`);
 
-const headerHeight = headerElement.getBoundingClientRect().height;
+let headerHeight = headerElement.getBoundingClientRect().height;
 
 const closeNavigation = function () {
-  headerNavigation.classList.remove(`nav-shown`);
+  headerNavigation.classList.remove(`header-right-shown`);
   headerOverlay.classList.remove(`header-overlay-shown`);
   burgerIcon.setAttribute(`name`, `menu-sharp`);
 };
 
-window.addEventListener(`scroll`, () => {
-  const headerVisibleHeight = headerElement.getBoundingClientRect().bottom;
+const calcNavHeight = function () {
+  headerHeight = headerElement.getBoundingClientRect().height;
+  const headerVisibleHeight = headerHeight;
   const headerHeightPercentage =
     (headerVisibleHeight / window.innerHeight) * 100;
   let overlayHeight = 100 - headerHeightPercentage;
@@ -30,8 +31,14 @@ window.addEventListener(`scroll`, () => {
     `--overlay-height`,
     `${overlayHeight}vh`
   );
+};
+calcNavHeight();
+
+window.addEventListener(`scroll`, () => {
+  calcNavHeight();
   closeNavigation();
 });
+window.addEventListener(`resize`, calcNavHeight);
 
 // DISPLAYING YEAR
 const now = new Date();
@@ -93,7 +100,7 @@ burgerButton.addEventListener(`click`, () => {
     burgerButton.disabled = false;
   }, 500);
   let burgerIconName = burgerIcon.getAttribute(`name`);
-  headerNavigation.classList.toggle(`nav-shown`);
+  headerNavigation.classList.toggle(`header-right-shown`);
   headerOverlay.classList.toggle(`header-overlay-shown`);
   burgerIconName =
     burgerIconName === `menu-sharp` ? `close-sharp` : `menu-sharp`;

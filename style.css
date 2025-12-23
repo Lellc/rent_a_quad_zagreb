@@ -170,7 +170,7 @@ a {
 /* -------------------- HERO SECTION -------------------- */
 
 #section--hero {
-  min-height: 100vh;
+  min-height: 100dvh;
   background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
     url("images/MAR02485-Edit.jpg");
   background-size: cover;
@@ -180,7 +180,7 @@ a {
 }
 
 .heading-main {
-  font-size: clamp(5rem, 8.4vw, 10rem);
+  font-size: clamp(4.5rem, 8.4vw, 10rem);
   font-weight: 1000;
   text-transform: uppercase;
   color: #fff;
@@ -201,7 +201,7 @@ a {
   border: 1px solid var(--gray-border);
   border-radius: var(--border-radius-card);
   overflow: hidden;
-  padding: 4rem;
+  padding: clamp(2rem, 3.4vw, 4rem);
   background-color: #fff;
   box-shadow: var(--box-shadow-global);
 }
@@ -272,6 +272,7 @@ a {
   font-weight: 500;
   text-transform: uppercase;
   text-align: center;
+  display: block;
 }
 
 /* -------------------- INFO SECTION -------------------- */
@@ -450,7 +451,7 @@ a {
   }
 }
 
-#section--products .product-card {
+.product-card {
   transition: translate 500ms ease, scale 500ms ease;
   &:hover {
     translate: 0 -0.5rem;
