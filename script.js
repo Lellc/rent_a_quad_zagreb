@@ -21,8 +21,8 @@ const closeNavigation = function () {
 };
 
 const calcNavHeight = function () {
-  headerHeight = headerElement.getBoundingClientRect().height;
-  const headerVisibleHeight = headerHeight;
+  headerStats = headerElement.getBoundingClientRect();
+  const headerVisibleHeight = headerStats.bottom;
   const headerHeightPercentage =
     (headerVisibleHeight / window.innerHeight) * 100;
   let overlayHeight = 100 - headerHeightPercentage;
@@ -31,6 +31,7 @@ const calcNavHeight = function () {
     `--overlay-height`,
     `${overlayHeight}vh`
   );
+  console.log(overlayHeight);
 };
 calcNavHeight();
 
