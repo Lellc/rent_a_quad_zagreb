@@ -29,7 +29,7 @@ const calcNavHeight = function () {
   if (overlayHeight >= 100) overlayHeight = 100;
   document.documentElement.style.setProperty(
     `--overlay-height`,
-    `${overlayHeight}vh`
+    `${overlayHeight}dvh`
   );
   console.log(overlayHeight);
 };

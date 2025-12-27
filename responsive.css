@@ -6,7 +6,7 @@
 
 @media (max-width: 952px) {
   :root {
-    --overlay-height: 90vh;
+    --overlay-height: 90dvh;
   }
 
   /* HEADER */
