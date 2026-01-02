@@ -5,50 +5,10 @@
 }
 
 @media (max-width: 952px) {
-  :root {
-    --overlay-height: 90dvh;
-  }
-
   /* HEADER */
 
   .logo {
     width: 5rem;
-  }
-
-  .header-overlay {
-    position: fixed;
-    bottom: 0;
-    opacity: 0;
-    height: var(--overlay-height);
-    width: 100vw;
-    background-color: #000;
-    transition: opacity 500ms ease;
-    pointer-events: none;
-  }
-
-  .header-overlay-shown {
-    opacity: 0.5;
-    pointer-events: all;
-  }
-
-  .header-right {
-    position: fixed !important;
-    bottom: 0;
-    right: -25rem;
-    grid-template-columns: 1fr;
-    align-content: center;
-    justify-items: center;
-    background-color: #fff;
-    height: var(--overlay-height);
-    border-left: 1px solid var(--gray-border);
-    padding-inline: 5rem;
-    margin-left: auto;
-    position: fixed;
-    transition: right 500ms ease;
-  }
-
-  .header-right-shown {
-    right: 0rem;
   }
 
   .btn-burger {
@@ -59,42 +19,69 @@
     font-size: 2rem;
   }
 
+  .header-right {
+    display: none;
+  }
+
+  .navigation-mobile {
+    display: grid;
+  }
+
+  .navigation-mobile-open {
+    right: 0;
+  }
+
+  .header-overlay {
+    display: block;
+    pointer-events: all;
+  }
+
+  .header-overlay-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   /* HERO */
   #section--hero {
     margin-bottom: 8rem;
   }
+
   /* PRODUCTS */
   .product-cards-container {
     grid-template-columns: 1fr 1fr;
   }
+
   .product-card {
     padding: clamp(2rem, 6.9vw, 4rem);
   }
+
   /* INFO */
   .info-bento-container {
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
+
   .info-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+
   .info-img {
     grid-column: span 1;
   }
+
   /* EMAIL */
   .email-content {
     grid-template-columns: 1fr;
   }
+
   .form-img {
     display: block;
   }
-  .input-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
+
   .footer {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -102,13 +89,20 @@
   .product-cards-container {
     grid-template-columns: 1fr;
   }
+
   .product-card {
     padding: clamp(2rem, 10.1vw, 4rem);
   }
+
   .info-bento-container {
     grid-template-columns: 1fr;
   }
+
   .info-img {
     display: none;
+  }
+
+  .input-grid {
+    grid-template-columns: 1fr;
   }
 }

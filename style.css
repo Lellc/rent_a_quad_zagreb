@@ -10,6 +10,7 @@
   --box-shadow-global: 0 0 0.5rem rgba(0, 0, 0, 0.06);
   --border-radius-btn: 0.25rem;
   --border-radius-card: 0.5rem;
+  --mobile-nav-padding: 0;
 }
 
 html {
@@ -125,7 +126,7 @@ a {
   box-shadow: var(--box-shadow-global);
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header-content {
@@ -164,11 +165,38 @@ a {
 .header-fixed-position {
   position: fixed !important;
   width: 100%;
-  opacity: 0.75;
-  transition: opacity 250ms ease;
-  &:hover {
-    opacity: 1;
-  }
+}
+
+.header-overlay {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  opacity: 0.5;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  transition: opacity 500ms ease;
+  z-index: 1;
+}
+
+.navigation-mobile {
+  display: none;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-items: center;
+  gap: 4rem;
+  position: fixed;
+  bottom: 0;
+  right: -20rem;
+  background-color: #fff;
+  padding-top: var(--mobile-nav-padding);
+  border-left: 1px solid var(--gray-border);
+  padding-inline: 5rem;
+  margin-left: auto;
+  transition: right 500ms ease;
+  min-height: 100vh;
+  box-shadow: var(--box-shadow-global);
+  z-index: 1;
 }
 
 /* -------------------- HERO SECTION -------------------- */

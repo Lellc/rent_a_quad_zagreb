@@ -1,45 +1,55 @@
 `use strict`;
+
 const body = document.body;
-const allSections = document.querySelectorAll(`.section`);
 const allSectionContents = document.querySelectorAll(`.section-content`);
-const logos = document.querySelectorAll(`[data-id="logo"]`);
 const burgerButton = document.querySelector(`.btn-burger`);
 const headerNavigation = document.querySelector(`.header-right`);
-const navLinks = document.querySelectorAll(`.nav-link`);
 const footerYearEl = document.querySelector(`.footer-year`);
 const headerElement = document.querySelector(`#header`);
 const heroSection = document.querySelector(`#section--hero`);
 const headerOverlay = document.querySelector(`.header-overlay`);
 const burgerIcon = burgerButton.querySelector(`ion-icon`);
+const mobileNavigation = document.querySelector(`.navigation-mobile`);
 
 let headerHeight = headerElement.getBoundingClientRect().height;
+let isMobileNavOpen = false;
 
 const closeNavigation = function () {
-  headerNavigation.classList.remove(`header-right-shown`);
-  headerOverlay.classList.remove(`header-overlay-shown`);
+  mobileNavigation.classList.remove(`navigation-mobile-open`);
+  headerOverlay.classList.add(`header-overlay-hidden`);
   burgerIcon.setAttribute(`name`, `menu-sharp`);
+  isMobileNavOpen = false;
+};
+
+closeNavigation();
+
+const openNavigation = function () {
+  mobileNavigation.classList.add(`navigation-mobile-open`);
+  headerOverlay.classList.remove(`header-overlay-hidden`);
+  burgerIcon.setAttribute(`name`, `close-sharp`);
+  isMobileNavOpen = true;
 };
 
 const calcNavHeight = function () {
-  headerStats = headerElement.getBoundingClientRect();
+  const headerStats = headerElement.getBoundingClientRect();
+  if (headerStats.bottom <= 0) return;
   const headerVisibleHeight = headerStats.bottom;
-  const headerHeightPercentage =
-    (headerVisibleHeight / window.innerHeight) * 100;
-  let overlayHeight = 100 - headerHeightPercentage;
-  if (overlayHeight >= 100) overlayHeight = 100;
-  document.documentElement.style.setProperty(
-    `--overlay-height`,
-    `${overlayHeight}dvh`
-  );
-  console.log(overlayHeight);
+  // prettier-ignore
+  document.documentElement.style.setProperty(`--mobile-nav-padding`, `${headerVisibleHeight}px`);
 };
 calcNavHeight();
 
 window.addEventListener(`scroll`, () => {
+  closeNavigation();
+  calcNavHeight();
+});
+
+window.addEventListener(`resize`, () => {
+  headerHeight = headerElement.getBoundingClientRect().height;
+  navWidth = mobileNavigation.getBoundingClientRect().width;
   calcNavHeight();
   closeNavigation();
 });
-window.addEventListener(`resize`, calcNavHeight);
 
 // DISPLAYING YEAR
 const now = new Date();
@@ -51,6 +61,7 @@ body.addEventListener(`click`, (e) => {
   const link = e.target.closest(`[data-id="navigation"]`);
   if (!link) return;
   e.preventDefault();
+  const headerHeight = headerElement.getBoundingClientRect().height;
   const destination = link.getAttribute(`href`);
   if (destination === `#`) {
     scrollTo(0, 0);
@@ -59,7 +70,7 @@ body.addEventListener(`click`, (e) => {
   }
   const destinationElement = document.querySelector(destination);
   const offset =
-    destination === `#section--email` ? headerHeight : 96 + headerHeight;
+    destination === `#section--email` ? 32 + headerHeight : 96 + headerHeight;
   const destinationElementTop =
     window.scrollY + destinationElement.getBoundingClientRect().top - offset;
   window.scrollTo({
@@ -100,12 +111,8 @@ burgerButton.addEventListener(`click`, () => {
   setTimeout(() => {
     burgerButton.disabled = false;
   }, 500);
-  let burgerIconName = burgerIcon.getAttribute(`name`);
-  headerNavigation.classList.toggle(`header-right-shown`);
-  headerOverlay.classList.toggle(`header-overlay-shown`);
-  burgerIconName =
-    burgerIconName === `menu-sharp` ? `close-sharp` : `menu-sharp`;
-  burgerIcon.setAttribute(`name`, burgerIconName);
+  if (isMobileNavOpen) closeNavigation();
+  else openNavigation();
 });
 
 headerOverlay.addEventListener(`click`, () => {
