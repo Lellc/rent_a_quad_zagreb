@@ -5,15 +5,11 @@
   /* HEADER */
 
   .logo {
-    width: 5rem;
+    width: 6rem;
   }
 
   .btn-burger {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    font-size: 2rem;
   }
 
   .header-right {
@@ -94,6 +90,19 @@
   html {
     font-size: 12px;
   }
+
+  #section--hero {
+    margin-bottom: 8rem;
+  }
+
+  .section {
+    margin-bottom: 8rem;
+  }
+
+  .section-heading {
+    margin-bottom: 4rem;
+  }
+
   .product-cards-container {
     grid-template-columns: 1fr;
   }

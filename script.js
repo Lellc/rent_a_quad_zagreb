@@ -154,7 +154,6 @@ body.addEventListener(`click`, (e) => {
   const sectionHeadingMargin = Number.parseFloat(
     getComputedStyle(sectionHeading).marginBottom
   );
-  console.log(sectionHeadingMargin);
   const destination = link.getAttribute(`href`);
   if (destination === `#`) {
     scrollTo(0, 0);

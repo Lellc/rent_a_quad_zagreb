@@ -79,7 +79,6 @@ a {
 }
 
 .section-heading {
-  font-size: 3.5rem;
   font-size: clamp(2.5rem, 3vw, 3.5rem);
   text-transform: uppercase;
   font-weight: 800;
@@ -130,13 +129,15 @@ a {
 }
 
 .header-content {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding-inline: clamp(2rem, calc(14.29vw - 11.123rem), 6rem);
   padding-block: 1rem;
+
+  max-width: 120rem;
+  margin-inline: auto;
 }
 
 .header-right {
@@ -160,6 +161,10 @@ a {
 
 .btn-burger {
   display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  font-size: 2.2rem;
 }
 
 .header-fixed-position {
@@ -208,7 +213,7 @@ a {
   background-color: #000;
   background-size: cover;
   background-position: center;
-  display: flex;
+  align-content: end;
   margin-bottom: 12rem;
 }
 
@@ -220,6 +225,8 @@ a {
   margin-top: auto;
   padding: clamp(2rem, calc(14.29vw - 11.123rem), 6rem);
   line-height: 0.755;
+  max-width: 120rem;
+  margin-inline: auto;
 }
 
 /* -------------------- PRODUCTS SECTION -------------------- */
