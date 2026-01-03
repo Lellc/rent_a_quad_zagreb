@@ -10,6 +10,95 @@ const heroSection = document.querySelector(`#section--hero`);
 const headerOverlay = document.querySelector(`.header-overlay`);
 const burgerIcon = burgerButton.querySelector(`ion-icon`);
 const mobileNavigation = document.querySelector(`.navigation-mobile`);
+const productCardsContainer = document.querySelector(
+  `.product-cards-container`
+);
+
+// RENDERING PRODUCTS
+const products = [
+  {
+    imageLink: `https://placehold.co/600x300`,
+    imageAlt: `tg600`,
+    name: `TG600 ccm`,
+    seats: `2`,
+    power: `33 kW`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    price3H: `35€`,
+    price8H: `50€`,
+    price24H: `70€`,
+  },
+  {
+    imageLink: `https://placehold.co/600x300`,
+    imageAlt: `tg600`,
+    name: `TG600 ccm`,
+    seats: `2`,
+    power: `33 kW`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    price3H: `35€`,
+    price8H: `50€`,
+    price24H: `70€`,
+  },
+  {
+    imageLink: `https://placehold.co/600x300`,
+    imageAlt: `tg600`,
+    name: `TG600 ccm`,
+    seats: `2`,
+    power: `33 kW`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    price3H: `35€`,
+    price8H: `50€`,
+    price24H: `70€`,
+  },
+];
+
+products.forEach((product) => {
+  const productCardContent = `
+          <div class="product-card">
+            <img
+              src="${product.imageLink}"
+              alt="${product.imageAlt}"
+              class="product-img"
+              loading="lazy"
+            />
+            <h3 class="card-heading">${product.name}</h3>
+            <div class="tags">
+              <div class="tag">
+                <ion-icon name="people-sharp"></ion-icon>
+                <span>${product.seats} sjedala</span>
+              </div>
+              <div class="tag">
+                <ion-icon name="flash-sharp"></ion-icon>
+                <span>${product.power}</span>
+              </div>
+            </div>
+            <p class="card-description">
+              ${product.description}
+            </p>
+            <div class="card-prices">
+              <div>
+                <p class="time">3 sata</p>
+                <p class="price">${product.price3H}</p>
+              </div>
+              <div class="devider"></div>
+              <div>
+                <p class="time">8 sati</p>
+                <p class="price">${product.price8H}</p>
+              </div>
+              <div class="devider"></div>
+              <div>
+                <p class="time">24 sata</p>
+                <p class="price">${product.price24H}</p>
+              </div>
+            </div>
+            <a
+              class="btn btn-card-cta"
+              href="#section--email"
+              data-id="navigation"
+              >Rezerviraj</a
+            >
+          </div>`;
+  productCardsContainer.insertAdjacentHTML(`beforeend`, productCardContent);
+});
 
 let headerHeight = headerElement.getBoundingClientRect().height;
 let isMobileNavOpen = false;
@@ -45,10 +134,9 @@ window.addEventListener(`scroll`, () => {
 });
 
 window.addEventListener(`resize`, () => {
-  headerHeight = headerElement.getBoundingClientRect().height;
-  navWidth = mobileNavigation.getBoundingClientRect().width;
   calcNavHeight();
   closeNavigation();
+  createHeroObserver();
 });
 
 // DISPLAYING YEAR
@@ -61,7 +149,12 @@ body.addEventListener(`click`, (e) => {
   const link = e.target.closest(`[data-id="navigation"]`);
   if (!link) return;
   e.preventDefault();
-  const headerHeight = headerElement.getBoundingClientRect().height;
+  headerHeight = headerElement.getBoundingClientRect().height;
+  const sectionHeading = document.querySelector(`.section-heading`);
+  const sectionHeadingMargin = Number.parseFloat(
+    getComputedStyle(sectionHeading).marginBottom
+  );
+  console.log(sectionHeadingMargin);
   const destination = link.getAttribute(`href`);
   if (destination === `#`) {
     scrollTo(0, 0);
@@ -70,7 +163,9 @@ body.addEventListener(`click`, (e) => {
   }
   const destinationElement = document.querySelector(destination);
   const offset =
-    destination === `#section--email` ? 32 + headerHeight : 96 + headerHeight;
+    destination === `#section--email`
+      ? 32 + headerHeight
+      : sectionHeadingMargin + headerHeight;
   const destinationElementTop =
     window.scrollY + destinationElement.getBoundingClientRect().top - offset;
   window.scrollTo({
@@ -134,11 +229,19 @@ const heroHandler = function (entries) {
   });
 };
 
-const heroOptions = {
-  root: null,
-  rootMargin: `-${headerHeight}px`,
-  threshold: 0,
+let heroObserver;
+
+const createHeroObserver = function () {
+  headerHeight = headerElement.getBoundingClientRect().height;
+  if (heroObserver) heroObserver.disconnect();
+
+  heroObserver = new IntersectionObserver(heroHandler, {
+    root: null,
+    rootMargin: `-${headerHeight}px`,
+    threshold: 0,
+  });
+
+  heroObserver.observe(heroSection);
 };
 
-const heroObserver = new IntersectionObserver(heroHandler, heroOptions);
-heroObserver.observe(heroSection);
+createHeroObserver();
