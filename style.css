@@ -208,11 +208,11 @@ a {
 
 #section--hero {
   min-height: 100dvh;
-  /* background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
-    url("images/MAR02485-Edit.jpg"); */
-  background-color: #000;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
+    url("images/ATV/Hero/1.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   align-content: end;
   margin-bottom: 12rem;
 }
@@ -373,7 +373,7 @@ a {
 }
 
 .form-img-container {
-  /* background-image: url("images/TGB_2.jpeg"); */
+  background-image: url("images/ATV/section_email/14.jpeg");
   background-position: center;
   background-size: cover;
 }
