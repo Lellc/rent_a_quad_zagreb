@@ -17,7 +17,18 @@ const productCardsContainer = document.querySelector(
 // RENDERING PRODUCTS
 const products = [
   {
-    imageLink: `https://placehold.co/600x300`,
+    imageLink: `images/ATV/section_products/TGB blade 600 quad za najam rent a quad Zagreb.webp`,
+    imageAlt: `tg600`,
+    name: `TGB Blade 600`,
+    seats: `2`,
+    power: `33 kW`,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    price3H: `35€`,
+    price8H: `50€`,
+    price24H: `70€`,
+  },
+  {
+    imageLink: `images/ATV/section_products/TGB blade 1000 quad za najam rent a quad Zagreb.webp`,
     imageAlt: `tg600`,
     name: `TG600 ccm`,
     seats: `2`,
@@ -28,18 +39,7 @@ const products = [
     price24H: `70€`,
   },
   {
-    imageLink: `https://placehold.co/600x300`,
-    imageAlt: `tg600`,
-    name: `TG600 ccm`,
-    seats: `2`,
-    power: `33 kW`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
-    price3H: `35€`,
-    price8H: `50€`,
-    price24H: `70€`,
-  },
-  {
-    imageLink: `https://placehold.co/600x300`,
+    imageLink: `images/ATV/section_products/Hooleox quad za najam rent a quad Zagreb.webp`,
     imageAlt: `tg600`,
     name: `TG600 ccm`,
     seats: `2`,
