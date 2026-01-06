@@ -209,7 +209,7 @@ a {
 #section--hero {
   min-height: 100dvh;
   background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0)),
-    url("images/ATV/Hero/1.jpg");
+    url("images/ATV/hero/Hero_cropped.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -373,7 +373,7 @@ a {
 }
 
 .form-img-container {
-  background-image: url("images/ATV/section_email/14.jpeg");
+  background-image: url("images/ATV/section_email/14_cropped.webp");
   background-position: center;
   background-size: cover;
 }
