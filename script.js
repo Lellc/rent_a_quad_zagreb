@@ -11,40 +11,40 @@ const headerOverlay = document.querySelector(`.header-overlay`);
 const burgerIcon = burgerButton.querySelector(`ion-icon`);
 const mobileNavigation = document.querySelector(`.navigation-mobile`);
 const productCardsContainer = document.querySelector(
-  `.product-cards-container`
+  `.product-cards-container`,
 );
 
 // RENDERING PRODUCTS
 const products = [
   {
     imageLink: `images/ATV/section_products/TGB blade 600 quad za najam rent a quad Zagreb.webp`,
-    imageAlt: `tg600`,
+    imageAlt: `TGB blade 600 quad za najam u Zagrebu`,
     name: `TGB Blade 600`,
     seats: `2`,
     power: `33 kW`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    description: `Idealan quad za rekreativne vožnje, izlete i off-road avanture. Savršen je izbor za parove i prijatelje koji žele istraživati prirodu uz maksimalnu sigurnost i kontrolu.`,
     price3H: `35€`,
     price8H: `50€`,
     price24H: `70€`,
   },
   {
     imageLink: `images/ATV/section_products/TGB blade 1000 quad za najam rent a quad Zagreb.webp`,
-    imageAlt: `tg600`,
-    name: `TG600 ccm`,
+    imageAlt: `TGB blade 1000 quad za najam u Zagrebu`,
+    name: `TGB blade 1000`,
     seats: `2`,
-    power: `33 kW`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    power: `61 kW`,
+    description: `Moćni ATV namijenjen iskusnijim vozačima koji traže vrhunske performanse i snagu na zahtjevnim terenima. Idealan je za duže ture, adrenalinske vožnje i ozbiljan off-road.`,
     price3H: `35€`,
     price8H: `50€`,
     price24H: `70€`,
   },
   {
-    imageLink: `images/ATV/section_products/Hooleox quad za najam rent a quad Zagreb.webp`,
-    imageAlt: `tg600`,
-    name: `TG600 ccm`,
+    imageLink: `images/ATV/section_products/Hooleox buggy za najam rent a quad Zagreb.webp`,
+    imageAlt: `Hooleox buggy za najam u Zagrebu`,
+    name: `Hooleox`,
     seats: `2`,
-    power: `33 kW`,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe soluta explicabo quidem amet quasi nemo. Nesciunt, nostrum omnis? Et.`,
+    power: `36 kW`,
+    description: `Nudi iskustvo vožnje s dodatnom udobnošću i sigurnošću. Zatvorena konstrukcija čini ga savršenim izborom za one koji žele off-road doživljaj u svim vremenskim uvjetima.`,
     price3H: `35€`,
     price8H: `50€`,
     price24H: `70€`,
@@ -53,50 +53,49 @@ const products = [
 
 products.forEach((product) => {
   const productCardContent = `
-          <div class="product-card">
-            <img
-              src="${product.imageLink}"
-              alt="${product.imageAlt}"
-              class="product-img"
-              loading="lazy"
-            />
-            <h3 class="card-heading">${product.name}</h3>
-            <div class="tags">
-              <div class="tag">
-                <ion-icon name="people-sharp"></ion-icon>
-                <span>${product.seats} sjedala</span>
-              </div>
-              <div class="tag">
-                <ion-icon name="flash-sharp"></ion-icon>
-                <span>${product.power}</span>
-              </div>
-            </div>
-            <p class="card-description">
-              ${product.description}
-            </p>
-            <div class="card-prices">
-              <div>
-                <p class="time">3 sata</p>
-                <p class="price">${product.price3H}</p>
-              </div>
-              <div class="devider"></div>
-              <div>
-                <p class="time">8 sati</p>
-                <p class="price">${product.price8H}</p>
-              </div>
-              <div class="devider"></div>
-              <div>
-                <p class="time">24 sata</p>
-                <p class="price">${product.price24H}</p>
-              </div>
-            </div>
-            <a
-              class="btn btn-card-cta"
-              href="#section--email"
-              data-id="navigation"
-              >Rezerviraj</a
-            >
-          </div>`;
+  <div class="product-card">
+    <div class="product-card-top">
+      <img
+        src="${product.imageLink}"
+        alt="${product.imageAlt}"
+        class="product-img"
+        loading="lazy"
+      />
+      <h3 class="card-heading">${product.name}</h3>
+      <div class="tags">
+        <div class="tag">
+          <ion-icon name="people-sharp"></ion-icon>
+          <span>${product.seats} sjedala</span>
+        </div>
+        <div class="tag">
+          <ion-icon name="flash-sharp"></ion-icon>
+          <span>${product.power}</span>
+        </div>
+      </div>
+      <p class="card-description">${product.description}</p>
+    </div>
+    <div class="product-card-bottom">
+      <div class="card-prices">
+        <div>
+          <p class="time">3 sata</p>
+          <p class="price">${product.price3H}</p>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <p class="time">8 sati</p>
+          <p class="price">${product.price8H}</p>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <p class="time">24 sata</p>
+          <p class="price">${product.price24H}</p>
+        </div>
+      </div>
+      <a class="btn btn-card-cta" href="#section--email" data-id="navigation"
+        >Rezerviraj</a
+      >
+    </div>
+  </div>`;
   productCardsContainer.insertAdjacentHTML(`beforeend`, productCardContent);
 });
 
@@ -121,8 +120,8 @@ const openNavigation = function () {
 
 const calcNavHeight = function () {
   const headerStats = headerElement.getBoundingClientRect();
-  if (headerStats.bottom <= 0) return;
   const headerVisibleHeight = headerStats.bottom;
+  if (headerVisibleHeight <= 0) return;
   // prettier-ignore
   document.documentElement.style.setProperty(`--mobile-nav-padding`, `${headerVisibleHeight}px`);
 };
@@ -134,8 +133,8 @@ window.addEventListener(`scroll`, () => {
 });
 
 window.addEventListener(`resize`, () => {
-  calcNavHeight();
   closeNavigation();
+  calcNavHeight();
   createHeroObserver();
 });
 
@@ -152,7 +151,7 @@ body.addEventListener(`click`, (e) => {
   headerHeight = headerElement.getBoundingClientRect().height;
   const sectionHeading = document.querySelector(`.section-heading`);
   const sectionHeadingMargin = Number.parseFloat(
-    getComputedStyle(sectionHeading).marginBottom
+    getComputedStyle(sectionHeading).marginBottom,
   );
   const destination = link.getAttribute(`href`);
   if (destination === `#`) {
@@ -191,7 +190,7 @@ const sectionOptions = {
 
 const sectionObserver = new IntersectionObserver(
   sectionHandler,
-  sectionOptions
+  sectionOptions,
 );
 
 allSectionContents.forEach((content) => {
@@ -207,6 +206,7 @@ burgerButton.addEventListener(`click`, () => {
   }, 500);
   if (isMobileNavOpen) closeNavigation();
   else openNavigation();
+  calcNavHeight();
 });
 
 headerOverlay.addEventListener(`click`, () => {
@@ -230,17 +230,16 @@ const heroHandler = function (entries) {
 
 let heroObserver;
 
-const createHeroObserver = function () {
+function createHeroObserver() {
   headerHeight = headerElement.getBoundingClientRect().height;
   if (heroObserver) heroObserver.disconnect();
 
   heroObserver = new IntersectionObserver(heroHandler, {
     root: null,
     rootMargin: `-${headerHeight}px`,
-    threshold: 0,
   });
 
   heroObserver.observe(heroSection);
-};
+}
 
 createHeroObserver();

@@ -1,4 +1,4 @@
-@media (max-width: 990px) {
+@media (max-width: 1103px) {
   html {
     font-size: 14px;
   }
@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 636px) {
+@media (max-width: 735px) {
   html {
     font-size: 12px;
   }
@@ -118,6 +118,10 @@
 
   .info-img {
     display: none;
+  }
+
+  .form-heading {
+    margin-bottom: 3rem;
   }
 
   .input-grid {
