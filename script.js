@@ -129,6 +129,8 @@ const calcNavHeight = function () {
 };
 calcNavHeight();
 
+window.addEventListener(`load`, calcNavHeight);
+
 window.addEventListener(`scroll`, () => {
   closeNavigation();
   calcNavHeight();
