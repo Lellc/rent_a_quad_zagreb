@@ -39,7 +39,8 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .product-card {
+  .product-card,
+  .info-card {
     padding: clamp(2rem, 6.9vw, 4rem);
   }
 
@@ -92,15 +93,15 @@
   }
 
   #section--hero {
-    margin-bottom: 8rem;
+    margin-bottom: 9rem;
   }
 
   .section {
-    margin-bottom: 8rem;
+    margin-bottom: 9rem;
   }
 
   .section-heading {
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
   }
 
   .product-cards-container {
@@ -108,7 +109,8 @@
   }
 
   .product-card,
-  .form-container {
+  .form-container,
+  .info-card {
     padding: clamp(2rem, 10.1vw, 4rem);
   }
 
