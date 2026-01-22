@@ -75,6 +75,7 @@ products.forEach((product) => {
       <p class="card-description">${product.description}</p>
     </div>
     <div class="product-card-bottom">
+      <!--
       <div class="card-prices">
         <div>
           <p class="time">3 sata</p>
@@ -91,6 +92,7 @@ products.forEach((product) => {
           <p class="price">${product.price24H}</p>
         </div>
       </div>
+      -->
       <a class="btn btn-card-cta" href="#section--email" data-id="navigation"
         >Rezerviraj</a
       >
